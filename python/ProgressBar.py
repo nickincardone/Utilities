@@ -15,6 +15,10 @@ class ProgressBar(object):
 
     def update(self, amount=1):
         self.cur += amount
+        if self.cur > self.total:
+            self.cur = self.total
+        if self.cur < 0:
+            self.cur = 0
         self.draw_bar()
         if self.cur == self.total:
             print "\nDONE"
@@ -30,5 +34,5 @@ class ProgressBar(object):
 if __name__ == "__main__":
     b = ProgressBar(100)
     for x in range(100):
-        b.update(1)
+        b.update()
         time.sleep(.2)
