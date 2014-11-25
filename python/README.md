@@ -3,5 +3,6 @@
 ### ExcelHelpers
 Helper classes when dealing with an excel file
 
-### ProgressBar
-Creates a progress bar that can be updated on the command line
+### Command Line Tools
+Tools that do cool things when printing to the command line
+including making a progress bar and print text in different colors

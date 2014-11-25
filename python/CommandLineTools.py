@@ -4,10 +4,44 @@ import datetime
 import time
 
 
+class clColor:
+    PINK = '\033[95m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    END = '\033[0m'
+
+    # print clColor.PINK + "this text will be pink" + clColor.END
+
+
+class CLH(object):
+
+    def __init__(self):
+        pass
+
+    def color_string(self, text, color):
+        return color + text + clColor.END
+
+    def print_pink(self, text):
+        print clColor.PINK + text + clColor.END
+
+    def print_red(self, text):
+        print clColor.WARNING + text + clColor.END
+
+    def print_blue(self, text):
+        print clColor.BLUE + text + clColor.END
+
+    def print_green(self, text):
+        print clColor.GREEN + text + clColor.END
+
+
 class ProgressBar(object):
     # Creates a progress bar on the command line
 
     def __init__(self, total):
+        # TODO have better implementation of colored text
+        self.CLH = CLH()
         self.total = total
         self.cur = 0
         self.bar_size = 50
@@ -41,9 +75,10 @@ class ProgressBar(object):
 
         if percent != self.percent:
             sys.stdout.write("\rPercent: [{0}] {1:0.1f}%".format(
-                hashes + spaces, percent * 100))
+                self.CLH.color_string(hashes, clColor.GREEN) + spaces, percent * 100))
             sys.stdout.flush()
         self.percent = percent
+
 
 if __name__ == "__main__":
     bar = ProgressBar(78)
