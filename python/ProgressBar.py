@@ -31,22 +31,22 @@ class ProgressBar(object):
         spaces = ' ' * (self.bar_size - len(hashes))
 
         #time_diff = datetime.datetime.now() - self.start_time
-        #if not percent == 0: 
+        # if not percent == 0:
         #    est_time_remaining = time_diff.total_seconds() / percent - time_diff.total_seconds()
-        #else:
+        # else:
         #    est_time_remaining = 60
         #mins_remaining = divmod(est_time_remaining, 60)[0]
-        #sys.stdout.write("\rPercent: [{0}] {1}% {2} Minutes Left".format(
+        # sys.stdout.write("\rPercent: [{0}] {1}% {2} Minutes Left".format(
         #    hashes + spaces, int(round(percent * 100)), mins_remaining))
 
         if percent != self.percent:
-            sys.stdout.write("\rPercent: [{0}] {1}%".format(
-                hashes + spaces, int(round(percent * 100))))
+            sys.stdout.write("\rPercent: [{0}] {1:0.1f}%".format(
+                hashes + spaces, percent * 100))
             sys.stdout.flush()
         self.percent = percent
 
 if __name__ == "__main__":
-    b = ProgressBar(100)
-    for x in range(100):
-        b.update()
+    bar = ProgressBar(78)
+    for x in range(78):
+        bar.update()
         time.sleep(.5)

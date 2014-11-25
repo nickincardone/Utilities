@@ -1,7 +1,7 @@
 import xlsxwriter
 
 
-class ExcelHelper(object):
+class CSVToExcel(object):
 
     def __init__(self, wb_name):
         self.wb = xlsxwriter.Workbook(wb_name)
